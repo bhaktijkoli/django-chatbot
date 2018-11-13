@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+{% load static %}
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#4285f4">
   <title>Sign into your account</title>
-  <link rel="stylesheet" href="/css/app.css">
+
+  <link rel="stylesheet" href="{% static "/css/app.css" %}">
 </head>
 <body>
   <div class="login-clip-path-1 "></div>
@@ -14,7 +16,8 @@
     <div class="container">
       <div class="nav-logo">
         <a href="/">
-          <img src="/images/logo_white.png" alt="Logo">
+
+          <img src={% static "/images/logo_white.png" %} alt="Logo">
         </a>
       </div>
       <ul class="nav-items">
@@ -61,6 +64,7 @@
     </div>
   </section>
   <div style="height:1000px;"></div>
-  <script src="/js/app.js"></script>
+
+  <script src={% static "/js/app.js" %}></script>
 </body>
 </html>

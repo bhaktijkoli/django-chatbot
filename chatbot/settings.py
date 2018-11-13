@@ -1,5 +1,4 @@
-<<<<<<< HEAD
-=======
+
 """
 Django settings for chatbot project.
 
@@ -124,7 +123,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 STATIC_URL = '/static/'
 
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "project-static"),
+
+]
 STATIC_ROOT = os.path.join(BASE_DIR, "static")
 
 from .rest_settings import *
->>>>>>> 0d34246d585260f46b9900f7fbc9f44a5f43799a
