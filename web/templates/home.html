@@ -1,56 +1,22 @@
-
-
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
+{% extends 'layout/base.html' %}
 {% load static %}
 {% load staticfiles %}
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#4285f4">
-  <title>Chat bot</title>
-  <link rel="stylesheet" href="{% static "/css/app.css" %}">
-</head>
-<body>
-  <div class="home-clip-path-1"></div>
-  <nav id="navbar" class="nav-transparent">
-    <div class="container">
-      <div class="nav-logo">
-        <a href="/">
-
-          <img src="{% static "/images/logo_white.png" %}" alt="Logo">
-        </a>
+{% block content %}
+<div class="home-clip-path-1"></div>
+<section id="welcome">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-6">
+        <h1>Turn visitors into leads and customers into happy, engaged users</h1>
+        <p>Modern products for sales, marketing and support to connect with customers and grow faster.</p>
+        <a class="btn white">Get Started</a>
       </div>
-      <ul class="nav-items">
-        <li class="nav-item"><a href="/">Home</a></li>
-        <li class="nav-item"><a href="/">Solutions</a></li>
-        <li class="nav-item"><a href="/">Pricing</a></li>
+      <div class="col-sm-6">
 
-        <li class="nav-item"><a href="{% url 'web-login' %}">Login</a></li>
-      </ul>
-    </div>
-    <div class="nav-item-space"></div>
-  </nav>
-  <section id="welcome">
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-6">
-          <h1>Turn visitors into leads and customers into happy, engaged users</h1>
-          <p>Modern products for sales, marketing and support to connect with customers and grow faster.</p>
-          <a class="btn white">Get Started</a>
-        </div>
-        <div class="col-sm-6">
-
-          <img src="{% static "/images/welcome.png" %}" alt="Welcome" class="welcome-img">
-        </div>
+        <img src="{% static "/images/welcome.png" %}" alt="Welcome" class="welcome-img">
       </div>
     </div>
-  </section>
-  <div style="height:1000px;"></div>
-
-  <script src="{% static "/js/app.js" %}"></script>
-
-</body>
-</html>
+  </div>
+</section>
+<div style="height:1000px;"></div>
+{% endblock %}

@@ -1,18 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-{% load static %}
-
+  {% load static %}
+  {% load staticfiles %}
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#4285f4">
-  <title>Chat bot</title>
+  <title>{{ title| default:'Welcome to Chatbot' }}</title>
   <link rel="stylesheet" href="{% static "/css/app.css" %}">
 </head>
 <body>
-  <div class="home-clip-path-1"></div>
-  <nav id="navbar" class="nav-transparent">
+  <nav id="navbar" class="{% if navtransparent|default:0 == 1 %}nav-transparent{% else %}nav-raised{% endif %}">
     <div class="container">
       <div class="nav-logo">
         <a href="/">
@@ -21,17 +20,16 @@
         </a>
       </div>
       <ul class="nav-items">
-        <li class="nav-item"><a href="/">Home</a></li>
+        <li class="nav-item"><a href="{% url 'web-home' %}">Home</a></li>
         <li class="nav-item"><a href="/">Solutions</a></li>
         <li class="nav-item"><a href="/">Pricing</a></li>
-        <li class="nav-item"><a href="/login.html">Login</a></li>
+        <li class="nav-item"><a href="{% url 'web-login' %}">Login</a></li>
       </ul>
     </div>
     <div class="nav-item-space"></div>
   </nav>
-  <div style="height:1000px;"></div>
-
+  {% block content %}
+  {% endblock %}
   <script src="{% static "/js/app.js" %}"></script>
-
 </body>
 </html>
