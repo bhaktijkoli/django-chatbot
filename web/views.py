@@ -8,3 +8,7 @@ def home(request):
 def login(request):
     context = {'title': 'Login'}
     return render(request, 'login.html', context)
+
+def signup(request):
+    context = {'title': 'Signup'}
+    return render(request, 'signup.html', context)

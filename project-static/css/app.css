@@ -23,6 +23,9 @@ h1 {
 p {
   font-size: 1em; }
 
+a {
+  text-decoration: none; }
+
 html {
   box-sizing: border-box;
   -ms-overflow-style: scrollbar; }

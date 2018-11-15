@@ -1,38 +1,3 @@
-(function() {
-  if(document.getElementsByClassName('nav-transparent').length === 1) {
-    window.addEventListener('scroll', function(e){
-      if(window.scrollY > 70) {
-        document.getElementById('navbar').className = "nav-raised";
-      } else {
-        document.getElementById('navbar').className = "nav-transparent";
-      }
-    });
-  }
-})();
-
-let signupForm = document.getElementById('signup_form');
-if(signupForm) {
-  signupForm.addEventListener("submit", function(e) {
-    e.preventDefault();
-    let firstname = document.getElementById('firstname');
-    let lastname = document.getElementById('lastname');
-    let email = document.getElementById('email');
-    let password = document.getElementById('password');
-    let data = {
-      firstname: firstname.value,
-      lastname: lastname.value,
-      email: email.value,
-      password: password.value,
-    }
-    axios.post("/api/v1/auth/jwt/register", data).then(res=>{
-      alert("Success");
-    }).catch(res=>{
-      res = res.response;
-      fh.handle_error(res);
-    })
-  });
-}
-
 /* axios v0.19.0-beta.1 | (c) 2018 by Matt Zabriskie */
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
@@ -1693,18 +1658,3 @@ return /******/ (function(modules) { // webpackBootstrap
 });
 ;
 //# sourceMappingURL=axios.map
-
-window.fh = {
-  handle_error: function(res) {
-    switch(res.status) {
-      case 400: {
-        res.data.forEach(function(el){
-          console.log(el);
-        })
-      }
-    }
-  },
-  set_error: function(el, error) {
-
-  }
-}
