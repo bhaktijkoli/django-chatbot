@@ -27,13 +27,10 @@ class UserRegisterSerializer(serializers.ModelSerializer):
         style={'input_type':'password'},
         write_only=True
     )
-    password2 = serializers.CharField(
-        style={'input_type':'password'},
-        write_only=True
-    )
+
     class Meta:
         model = User
-        fields = ('email', 'firstname','lastname' ,'password','password2','token','expires')
+        fields = ('email', 'firstname','lastname' ,'password','token','expires')
         extra_kwargs = {'password':{'write_only':True}}
     def get_token(self,obj):
         user = obj
@@ -43,13 +40,6 @@ class UserRegisterSerializer(serializers.ModelSerializer):
     def get_expires(self,obj):
         return timezone.now() + expire_delta - datetime.timedelta(seconds=200)
 
-    def validate(self,data):
-        pw = data.get("password")
-        pw2 = data.pop("password2")
-
-        if pw != pw2:
-            raise serializers.ValidationError("Password must match ")
-        return data
     # def validate_email(self,value):
     #     qs = User.objects.filter(email__iexact=value)
     #     if qs.exists():

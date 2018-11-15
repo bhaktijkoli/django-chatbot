@@ -22,7 +22,7 @@ data={
     "firstname": "bhagyarsh",
     "lastname": "dhumal",
     "password": "bhagyarsh31",
-    "password2": "bhagyarsh31"
+    
 }
 r = requests.post(url = ENDPOINT_REG,data=data)
 print(r.json())
