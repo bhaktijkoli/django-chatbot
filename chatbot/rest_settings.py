@@ -1,6 +1,6 @@
 import datetime
 REST_FRAMEWORK = {
-    'EXCEPTION_HANDLER': 'accounts.api.utils.custom_exception_handler',
+    # 'EXCEPTION_HANDLER': 'accounts.api.utils.custom_exception_handler',
     'DEFAULT_PERMISSION_CLASSES': (
         'rest_framework.permissions.IsAuthenticated',
     ),
