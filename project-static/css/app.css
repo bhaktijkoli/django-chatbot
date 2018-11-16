@@ -1916,6 +1916,16 @@ html {
     color: #00a8FF; }
   .input-group input:focus, .input-group input:active {
     border: 1px solid #00a8ff; }
+  .input-group label {
+    color: #022144; }
+  .input-group .help-block {
+    color: #697A89;
+    margin: 5px 0px 0px 5px; }
+  .input-group .help-block.error {
+    color: #FF5722; }
+
+.input-group.error input {
+  border: 1px solid #FF5722; }
 
 .input-group .input-addon {
   position: relative; }

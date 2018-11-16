@@ -1,4 +1,6 @@
+let win = null;
 (function() {
+  ScrollReveal().reveal('.rv')
   if(document.getElementsByClassName('nav-transparent').length === 1) {
     window.addEventListener('scroll', function(e){
       if(window.scrollY > 70) {
@@ -24,6 +26,7 @@ if(signupForm) {
       email: email.value,
       password: password.value,
     }
+    fh.remove_all_errros(signupForm)
     axios.post("/api/v1/auth/jwt/register", data).then(res=>{
       alert("Success");
     }).catch(res=>{

@@ -3,31 +3,34 @@ module.exports = function(grunt) {
   grunt.initConfig({
     concat: {
       js: {
-        src: ['src/js/core.js',
-        'src/js/axios.js',
-        'src/js/formhandler.js',],
-      dest: 'js/app.js'
-    }
-  },
-  watch: {
-    files: ['src/sass/*.scss', 'src/js/*.js'],
-    tasks: ['sass', 'concat'],
-    options: {
-      interrupt: true,
+        src: [
+          'src/js/axios.js',
+          'src/js/scrollreveal.js',
+          'src/js/formhandler.js',
+          'src/js/core.js',
+        ],
+        dest: 'js/app.js'
+      }
     },
-  },
-  sass: {
-    app: {
-      files: {
-        'css/app.css': 'src/sass/app.scss',
+    watch: {
+      files: ['src/sass/*.scss', 'src/js/*.js'],
+      tasks: ['sass', 'concat'],
+      options: {
+        interrupt: true,
+      },
+    },
+    sass: {
+      app: {
+        files: {
+          'css/app.css': 'src/sass/app.scss',
+        }
       }
     }
-  }
-});
+  });
 
-// Tasks
-grunt.loadNpmTasks('grunt-contrib-concat');
-grunt.loadNpmTasks('grunt-contrib-uglify');
-grunt.loadNpmTasks('grunt-contrib-watch');
-grunt.loadNpmTasks('grunt-contrib-sass');
+  // Tasks
+  grunt.loadNpmTasks('grunt-contrib-concat');
+  grunt.loadNpmTasks('grunt-contrib-uglify');
+  grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-contrib-sass');
 }
