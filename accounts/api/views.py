@@ -11,6 +11,8 @@ from rest_framework import permissions
 from rest_framework_jwt.settings import api_settings
 from .utils import jwt_response_payload_handler
 
+
+
 User = get_user_model()
 
 jwt_payload_handler = api_settings.JWT_PAYLOAD_HANDLER

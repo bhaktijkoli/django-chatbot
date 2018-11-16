@@ -18,7 +18,7 @@ data = {
 # print(r.json())
 
 data={
-    "email": "bhagyarsh19@gmail.com",
+    "email": "bhagyarsh20@gmail.com",
     "firstname": "bhagyarsh",
     "lastname": "dhumal",
     "password": "bhagyarsh31",
@@ -26,3 +26,4 @@ data={
 }
 r = requests.post(url = ENDPOINT_REG,data=data)
 print(r.json())
+print(r)

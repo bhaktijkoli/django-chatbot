@@ -1,5 +1,6 @@
 import datetime
 REST_FRAMEWORK = {
+    'EXCEPTION_HANDLER': 'accounts.api.utils.custom_exception_handler',
     'DEFAULT_PERMISSION_CLASSES': (
         'rest_framework.permissions.IsAuthenticated',
     ),
@@ -12,7 +13,7 @@ REST_FRAMEWORK = {
 JWT_AUTH = {
     'JWT_ENCODE_HANDLER':
     'rest_framework_jwt.utils.jwt_encode_handler',
-
+    'JWT_USE_CUSTOM_EXCEPTION_HANDLER': True,
     'JWT_DECODE_HANDLER':
     'rest_framework_jwt.utils.jwt_decode_handler',
 
@@ -32,4 +33,5 @@ JWT_AUTH = {
 
     'JWT_AUTH_HEADER_PREFIX': 'JWT',
     'JWT_AUTH_COOKIE': None,
+    
 }

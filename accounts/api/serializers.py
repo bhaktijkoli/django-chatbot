@@ -5,7 +5,7 @@ from django.conf import settings
 from rest_framework_jwt.settings import api_settings
 import datetime
 from django.utils import timezone
-
+from rest_framework.views import exception_handler
 jwt_payload_handler = api_settings.JWT_PAYLOAD_HANDLER
 jwt_encode_handler = api_settings.JWT_ENCODE_HANDLER
 
@@ -27,7 +27,10 @@ class UserRegisterSerializer(serializers.ModelSerializer):
         style={'input_type':'password'},
         write_only=True
     )
-
+    # password2 = serializers.CharField(
+    #     style={'input_type':'password'},
+    #     write_only=True
+    # )
     class Meta:
         model = User
         fields = ('email', 'firstname','lastname' ,'password','token','expires')
@@ -40,6 +43,13 @@ class UserRegisterSerializer(serializers.ModelSerializer):
     def get_expires(self,obj):
         return timezone.now() + expire_delta - datetime.timedelta(seconds=200)
 
+    # def validate(self,data):
+    #     pw = data.get("password")
+    #     pw2 = data.pop("password2")
+
+    #     if pw != pw2:
+    #         raise serializers.ValidationError("Password must match ")
+    #     return data
     # def validate_email(self,value):
     #     qs = User.objects.filter(email__iexact=value)
     #     if qs.exists():
