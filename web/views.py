@@ -30,20 +30,16 @@ def loginsession(request):
         email = requestdata.get('email', '').strip()
         password = requestdata.get('password', '').strip()
         if email and password:
-              
             user = authenticate(email=email, password=password)
-            # Found a match
             print(user)
             if user is not None:
-                # User is active
-                   
                 auth_login(request, user)
                 data = {'success': True}
 
             else:
-                data = {'success': False, 'error': 'Wrong username and/or password'}
-            print(request.user.is_authenticated)
+                return HttpResponseBadRequest()
+           
             return HttpResponse(json.dumps(data), content_type='application/json')
 
-    # Request method is not POST or one of username or password is missing
+   
     return HttpResponseBadRequest()
