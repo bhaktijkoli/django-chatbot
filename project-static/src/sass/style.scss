@@ -25,5 +25,18 @@ p {
   font-size: 1em;
 }
 a {
+  color: #022144;
   text-decoration: none;
+}
+.rv {
+  visibility: hidden;
+}
+.right {
+  float: right;
+}
+.left {
+  float: left;
+}
+.center {
+  text-align: center;
 }

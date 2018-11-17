@@ -3239,7 +3239,10 @@ window.fh = {
 
 let win = null;
 (function() {
-  ScrollReveal().reveal('.rv')
+  let scrollRevealOptions = {
+    distance: '10px',
+  }
+  ScrollReveal().reveal('.rv', scrollRevealOptions)
   if(document.getElementsByClassName('nav-transparent').length === 1) {
     window.addEventListener('scroll', function(e){
       if(window.scrollY > 70) {

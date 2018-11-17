@@ -34,6 +34,7 @@
   border: 1px solid #FF5722;
 }
 .input-group .input-addon {
+  margin: 5px 0px 5px 0px;
   position: relative;
   .addon {
     position: absolute;
@@ -42,4 +43,7 @@
     font-size: 2em;
     color: #979797;
   }
+}
+.input-group-button {
+  margin: 5px 0px 5px 0px;
 }

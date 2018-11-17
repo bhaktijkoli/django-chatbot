@@ -8,7 +8,7 @@
   <div class="container">
     <div class="row">
       <div class="col-sm-6 offset-sm-6">
-        <div class="card raised">
+        <div class="card raised rv">
           <div class="card-header">
             <h2 class="card-title">Sign into your account</h2>
             <p class="card-subtitle">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
@@ -31,11 +31,17 @@
                     <input type="password" id="password" name="password" placeholder="Enter your email address">
                     <i class="addon typcn typcn-key"></i>
                   </div>
+                  <a href="#" class="right">Forgot your password?</a>
                 </div>
               </div>
               <div class="col-sm-12">
-                <div class="input-group">
-                  <button type="submit" class="btn primary">Login</button>
+                <div class="input-group-button">
+                  <button type="submit" class="btn primary ld-ext-right">Login<div class="ld ld-ring ld-spin"></div></button>
+                </div>
+              </div>
+              <div class="col-sm-12">
+                <div class="input-group-button">
+                  <p>Don't have an account? <a href="{% url 'web-signup' %}">Create account</a></p>
                 </div>
               </div>
             </div>
