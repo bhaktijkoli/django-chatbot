@@ -6,7 +6,12 @@ module.exports = function(grunt) {
         stripBanners: true,
       },
       js: {
-        src: ['src/js/*.js'],
+        src: [
+          'src/js/axios.js',
+          'src/js/scrollreveal.js',
+          'src/js/formhandler.js',
+          'src/js/core.js',
+        ],
         dest: 'js/app.js'
       }
     },
