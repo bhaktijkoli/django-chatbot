@@ -1,5 +1,7 @@
+let lastButton = null;
 window.fh = {
   handle_error: function(res) {
+    fh.remove_all_errros(signupForm);
     switch(res.status) {
       case 400: {
         Object.entries(res.data).forEach(function(el){
@@ -9,6 +11,7 @@ window.fh = {
         })
       }
     }
+    fh.show_button();
   },
   set_error: function(element, msg) {
     let group = document.querySelector("#"+element).closest('.input-group');
@@ -26,5 +29,14 @@ window.fh = {
         helpblock.innerHTML=" ";
       }
     })
+  },
+  hide_button: function() {
+    lastButton = document.activeElement;
+    lastButton.classList.add('running')
+    lastButton.disabled = true;
+  },
+  show_button: function() {
+    lastButton.disabled = false;
+    lastButton.classList.remove('running');
   }
 }

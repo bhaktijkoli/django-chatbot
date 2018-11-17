@@ -17,6 +17,11 @@
             <form id="login_form"> {% csrf_token %}
               <div class="row">
                 <div class="col-sm-12">
+                  <div class="error-block">
+                    The email address or password you entered is incorrect.
+                  </div>
+                </div>
+                <div class="col-sm-12">
                   <div class="input-group">
                     <label for="email">Email</label>
                     <div class="input-addon">

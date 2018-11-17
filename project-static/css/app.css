@@ -1913,7 +1913,7 @@ html {
   transition: 0s; }
 
 .input-group {
-  margin: 15px 0px 15px 0px; }
+  margin: 10px 0px 10px 0px; }
   .input-group input {
     border: 1px solid #979797;
     border-radius: 6px;
@@ -1953,6 +1953,12 @@ html {
 .input-group-button {
   margin: 5px 0px 5px 0px; }
 
+.error-block {
+  display: none;
+  background-color: #e6525a26;
+  color: #FF5722;
+  padding: 10px; }
+
 .card {
   width: 100%;
   min-height: 30px;
@@ -1960,9 +1966,11 @@ html {
   .card .card-header {
     margin: 20px 0px 20px 0px; }
   .card .card-title {
-    color: #022144; }
+    color: #022144;
+    margin: 5px 0px 5px 0px; }
   .card .card-subtitle {
-    color: #697A89; }
+    color: #697A89;
+    margin: 5px 0px 5px 0px; }
 
 .card.raised {
   background: #FFFFFF;

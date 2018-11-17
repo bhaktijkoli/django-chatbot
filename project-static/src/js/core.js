@@ -34,7 +34,7 @@ if(signupForm) {
       email: email.value,
       password: password.value,
     }
-    fh.remove_all_errros(signupForm)
+    fh.hide_button();
     axios.post("/api/v1/auth/jwt/register", data).then(res=>{
       alert("Success");
     }).catch(res=>{
@@ -48,6 +48,7 @@ let loginForm = document.getElementById('login_form');
 if(loginForm) {
   loginForm.addEventListener("submit", function(e) {
     e.preventDefault();
+    fh.hide_button();
     let email = document.getElementById('email');
     let password = document.getElementById('password');
     let csrf_token = document.getElementById('csrf_token');
@@ -55,11 +56,11 @@ if(loginForm) {
       email: email.value,
       password: password.value,
     }
-    fh.remove_all_errros(loginForm)
     axios.post("/loginsession/", data).then(res=>{
-    }).catch(res=>{
-      res = res.response;
+    })
+    .catch(res=>{
       fh.handle_error(res);
+      document.querySelector('.error-block').style.display = "block";
     })
   });
 }

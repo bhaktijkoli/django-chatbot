@@ -1,5 +1,5 @@
 .input-group {
-  margin: 15px 0px 15px 0px;
+  margin: 10px 0px 10px 0px;
   input {
     border: 1px solid #979797;
     border-radius: 6px;
@@ -46,4 +46,10 @@
 }
 .input-group-button {
   margin: 5px 0px 5px 0px;
+}
+.error-block {
+  display: none;
+  background-color: #e6525a26;
+  color: #FF5722;
+  padding: 10px;
 }

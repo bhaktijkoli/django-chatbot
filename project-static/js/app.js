@@ -1,4 +1,3 @@
-/* axios v0.19.0-beta.1 | (c) 2018 by Matt Zabriskie */
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
 		module.exports = factory();
@@ -1659,6 +1658,116 @@ return /******/ (function(modules) { // webpackBootstrap
 ;
 //# sourceMappingURL=axios.map
 
+let token = document.head.querySelector('meta[name="csrf-token"]');
+if(token) {
+  axios.defaults.headers.post['X-CSRFToken'] = token.content;
+}
+
+(function() {
+  let scrollRevealOptions = {
+    distance: '10px',
+  }
+  ScrollReveal().reveal('.rv', scrollRevealOptions)
+  if(document.getElementsByClassName('nav-transparent').length === 1) {
+    window.addEventListener('scroll', function(e){
+      if(window.scrollY > 70) {
+        document.getElementById('navbar').className = "nav-raised";
+      } else {
+        document.getElementById('navbar').className = "nav-transparent";
+      }
+    });
+  }
+})();
+
+
+let signupForm = document.getElementById('signup_form');
+if(signupForm) {
+  signupForm.addEventListener("submit", function(e) {
+    e.preventDefault();
+    let firstname = document.getElementById('firstname');
+    let lastname = document.getElementById('lastname');
+    let email = document.getElementById('email');
+    let password = document.getElementById('password');
+    let data = {
+      firstname: firstname.value,
+      lastname: lastname.value,
+      email: email.value,
+      password: password.value,
+    }
+    fh.hide_button();
+    axios.post("/api/v1/auth/jwt/register", data).then(res=>{
+      alert("Success");
+    }).catch(res=>{
+      res = res.response;
+      fh.handle_error(res);
+    })
+  });
+}
+
+let loginForm = document.getElementById('login_form');
+if(loginForm) {
+  loginForm.addEventListener("submit", function(e) {
+    e.preventDefault();
+    fh.hide_button();
+    let email = document.getElementById('email');
+    let password = document.getElementById('password');
+    let csrf_token = document.getElementById('csrf_token');
+    let data = {
+      email: email.value,
+      password: password.value,
+    }
+    axios.post("/loginsession/", data).then(res=>{
+    })
+    .catch(res=>{
+      fh.handle_error(res);
+      document.querySelector('.error-block').style.display = "block";
+    })
+  });
+}
+
+let lastButton = null;
+window.fh = {
+  handle_error: function(res) {
+    fh.remove_all_errros(signupForm);
+    switch(res.status) {
+      case 400: {
+        Object.entries(res.data).forEach(function(el){
+          let element = el[0];
+          let msg = el[1][0];
+          fh.set_error(element, msg)
+        })
+      }
+    }
+    fh.show_button();
+  },
+  set_error: function(element, msg) {
+    let group = document.querySelector("#"+element).closest('.input-group');
+    let helpblock = group.querySelector('.help-block');
+    helpblock.innerHTML = msg;
+    helpblock.classList.add('error')
+    group.classList.add('error')
+  },
+  remove_all_errros: function(form) {
+    form.querySelectorAll(".input-group").forEach(function(group) {
+      group.classList.remove('error');
+      let helpblock = group.querySelector('.help-block');
+      if(helpblock) {
+        helpblock.classList.remove('error');
+        helpblock.innerHTML=" ";
+      }
+    })
+  },
+  hide_button: function() {
+    lastButton = document.activeElement;
+    lastButton.classList.add('running')
+    lastButton.disabled = true;
+  },
+  show_button: function() {
+    lastButton.disabled = false;
+    lastButton.classList.remove('running');
+  }
+}
+
 /*! @license ScrollReveal v4.0.5
 
 	Copyright 2018 Fisssion LLC.
@@ -3205,100 +3314,3 @@ ScrollReveal();
 return ScrollReveal;
 
 })));
-
-window.fh = {
-  handle_error: function(res) {
-    switch(res.status) {
-      case 400: {
-        Object.entries(res.data).forEach(function(el){
-          let element = el[0];
-          let msg = el[1][0];
-          fh.set_error(element, msg)
-        })
-      }
-    }
-  },
-  set_error: function(element, msg) {
-    let group = document.querySelector("#"+element).closest('.input-group');
-    let helpblock = group.querySelector('.help-block');
-    helpblock.innerHTML = msg;
-    helpblock.classList.add('error')
-    group.classList.add('error')
-  },
-  remove_all_errros: function(form) {
-    form.querySelectorAll(".input-group").forEach(function(group) {
-      group.classList.remove('error');
-      let helpblock = group.querySelector('.help-block');
-      if(helpblock) {
-        helpblock.classList.remove('error');
-        helpblock.innerHTML=" ";
-      }
-    })
-  }
-}
-
-let token = document.head.querySelector('meta[name="csrf-token"]');
-if(token) {
-  axios.defaults.headers.post['X-CSRFToken'] = token.content;
-}
-
-(function() {
-  let scrollRevealOptions = {
-    distance: '10px',
-  }
-  ScrollReveal().reveal('.rv', scrollRevealOptions)
-  if(document.getElementsByClassName('nav-transparent').length === 1) {
-    window.addEventListener('scroll', function(e){
-      if(window.scrollY > 70) {
-        document.getElementById('navbar').className = "nav-raised";
-      } else {
-        document.getElementById('navbar').className = "nav-transparent";
-      }
-    });
-  }
-})();
-
-
-let signupForm = document.getElementById('signup_form');
-if(signupForm) {
-  signupForm.addEventListener("submit", function(e) {
-    e.preventDefault();
-    let firstname = document.getElementById('firstname');
-    let lastname = document.getElementById('lastname');
-    let email = document.getElementById('email');
-    let password = document.getElementById('password');
-    let data = {
-      firstname: firstname.value,
-      lastname: lastname.value,
-      email: email.value,
-      password: password.value,
-    }
-    fh.remove_all_errros(signupForm)
-    axios.post("/registersession/", data).then(res=>{
-      alert("Success");
-    }).catch(res=>{
-      res = res.response;
-      fh.handle_error(res);
-    })
-  });
-}
-
-let loginForm = document.getElementById('login_form');
-if(loginForm) {
-  loginForm.addEventListener("submit", function(e) {
-    e.preventDefault();
-    let email = document.getElementById('email');
-    let password = document.getElementById('password');
-    let csrf_token = document.getElementById('csrf_token');
-    let data = {
-      email: email.value,
-      password: password.value,
-    }
-    fh.remove_all_errros(loginForm)
-    axios.post("/loginsession/", data).then(res=>{
-    }).catch(res=>{
-      res = res.response;
-      fh.handle_error(res);
-    })
-  });
-}
