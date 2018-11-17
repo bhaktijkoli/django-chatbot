@@ -3274,7 +3274,7 @@ if(signupForm) {
       password: password.value,
     }
     fh.remove_all_errros(signupForm)
-    axios.post("/api/v1/auth/jwt/register", data).then(res=>{
+    axios.post("/registersession/", data).then(res=>{
       alert("Success");
     }).catch(res=>{
       res = res.response;
