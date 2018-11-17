@@ -2,13 +2,11 @@ module.exports = function(grunt) {
   // Configuartion
   grunt.initConfig({
     concat: {
+      options: {
+        stripBanners: true,
+      },
       js: {
-        src: [
-          'src/js/axios.js',
-          'src/js/scrollreveal.js',
-          'src/js/formhandler.js',
-          'src/js/core.js',
-        ],
+        src: ['src/js/*.js'],
         dest: 'js/app.js'
       }
     },
@@ -25,7 +23,7 @@ module.exports = function(grunt) {
           'css/app.css': 'src/sass/app.scss',
         }
       }
-    }
+    },
   });
 
   // Tasks
