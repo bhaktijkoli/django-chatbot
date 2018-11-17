@@ -30,11 +30,48 @@ if(signupForm) {
       password: password.value,
     }
     fh.remove_all_errros(signupForm)
-    axios.post("/api/v1/auth/jwt/register", data).then(res=>{
+    axios.post("loginsession", data).then(res=>{
       alert("Success");
     }).catch(res=>{
       res = res.response;
       fh.handle_error(res);
     })
   });
+}
+
+let loginForm = document.getElementById('login_form');
+if(loginForm) {
+  loginForm.addEventListener("submit", function(e) {
+    axios.defaults.headers.post['X-CSRFToken'] = document.querySelector("[name=csrfmiddlewaretoken]").value;
+    e.preventDefault();
+    let email = document.getElementById('email');
+    let password = document.getElementById('password');
+    let csrf_token = document.getElementById('csrf_token');
+    let data = {
+      email: email.value,
+      password: password.value,
+    }
+    fh.remove_all_errros(loginForm)
+    axios.post("/loginsession/", data).then(res=>{
+    }).catch(res=>{
+      res = res.response;
+      fh.handle_error(res);
+    })
+  });
+}
+
+function getCookie(cname) {
+    var name = cname + "=";
+    var decodedCookie = decodeURIComponent(document.cookie);
+    var ca = decodedCookie.split(';');
+    for(var i = 0; i <ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return "";
 }
