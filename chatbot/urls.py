@@ -24,8 +24,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
 
     path('api-auth/', include('rest_framework.urls')),
-    path(r'oauth/', include('oauth2_provider.urls', namespace='oauth2_provider')),
-    path('api/v1/', include('accounts.api.urls')),
+    path('api/v1/oauth/', include('accounts.api.oauth.urls')),
+    path('api/v1/', include('accounts.api.jwt.urls')),
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
