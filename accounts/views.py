@@ -13,7 +13,7 @@ from django.utils.http import is_safe_url
 from django.utils.safestring import mark_safe
 
 
-from .forms import LoginForm, RegisterForm, GuestForm, ReactivateEmailForm, UserDetailChangeForm
+from .forms import LoginForm, ReactivateEmailForm, UserDetailChangeForm
 from .models import  EmailActivation
 
 

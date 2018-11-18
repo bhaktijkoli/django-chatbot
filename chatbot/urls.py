@@ -17,15 +17,14 @@ from django.contrib import admin
 from django.urls import path,include
 from django.conf import settings
 from django.conf.urls.static import static
-
-
 import accounts
+
 urlpatterns = [
     path('', include('web.urls')),
     path('admin/', admin.site.urls),
 
     path('api-auth/', include('rest_framework.urls')),
-
+    path(r'oauth/', include('oauth2_provider.urls', namespace='oauth2_provider')),
     path('api/v1/', include('accounts.api.urls')),
 ]
 
