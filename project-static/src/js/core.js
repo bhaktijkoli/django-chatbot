@@ -39,7 +39,7 @@ if(signupForm) {
       alert("Success");
     }).catch(res=>{
       res = res.response;
-      fh.handle_error(res);
+      fh.handle_error(signupForm, res);
     })
   });
 }
@@ -59,7 +59,7 @@ if(loginForm) {
     axios.post("/loginsession/", data).then(res=>{
     })
     .catch(res=>{
-      fh.handle_error(res);
+      fh.handle_error(loginForm, res);
       document.querySelector('.error-block').style.display = "block";
     })
   });

@@ -1,7 +1,7 @@
 let lastButton = null;
 window.fh = {
-  handle_error: function(res) {
-    fh.remove_all_errros(signupForm);
+  handle_error: function(form, res) {
+    fh.remove_all_errros(form);
     switch(res.status) {
       case 400: {
         Object.entries(res.data).forEach(function(el){
