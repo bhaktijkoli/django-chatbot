@@ -13,11 +13,15 @@ from django.contrib.auth import login as auth_login
 from django.http import (HttpResponse ,
                         HttpResponseBadRequest,
                         HttpResponseRedirect)
+from accounts.models import EmailActivation
+
 
 
 User = get_user_model()
 # Create your views here.
 def home(request):
+    # send_mail('Subject here', 'Here is the message.', settings.EMAIL_HOST_USER,
+    #      ['bhagyarsh@gmail.com'], fail_silently=False)
     context = {'title': 'Welcome to Chatbot', 'navtransparent': 1}
     return render(request, 'home.html', context)
 
@@ -64,11 +68,12 @@ def register(request):
         success , error = clean_data(firstname,lastname,password,email)
         if success:
             try:
-                User.objects.create_user(email=email,
+                user =  User.objects.create_user(email=email,
                             password=password, 
                             firstname=firstname, 
                             lastname=lastname)
                 data = {'success': True}
+
             except:
                 #Add error
                 return  HttpResponseBadRequest()
