@@ -40,3 +40,18 @@ a {
 .center {
   text-align: center;
 }
+.hide{
+  display:none;
+}
+.fullscreen {
+  position: fixed;
+  top: 0px;
+  height: 100vh;
+  width: 100%;
+  background-color: #FFFFFF;
+  z-index: 1080;
+}
+.fullscreen .typcn {
+  font-size:210px;
+  color: #00a8ff;
+}

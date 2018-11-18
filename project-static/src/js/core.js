@@ -36,7 +36,7 @@ if(signupForm) {
     }
     fh.hide_button();
     axios.post("/api/v1/auth/jwt/register", data).then(res=>{
-      alert("Success");
+      document.getElementById('signup_success').classList.remove('hide');
     }).catch(res=>{
       res = res.response;
       fh.handle_error(signupForm, res);
